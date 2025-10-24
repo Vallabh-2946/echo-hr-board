@@ -26,6 +26,42 @@ export default function InsightsPage() {
       icon: Users,
       color: 'text-secondary',
     },
+    {
+      title: 'Remote Work Impact',
+      description: 'Hybrid workers report 15% higher work-life balance satisfaction than full-time office workers.',
+      icon: TrendingUp,
+      color: 'text-purple-400',
+    },
+    {
+      title: 'Burnout Risk Prediction',
+      description: 'Sales team projected to reach high-risk burnout levels in 3 weeks without intervention.',
+      icon: TrendingUp,
+      color: 'text-red-400',
+    },
+    {
+      title: 'Training ROI Success',
+      description: 'Teams that completed stress management training show 23% lower burnout risk.',
+      icon: Users,
+      color: 'text-emerald-400',
+    },
+    {
+      title: 'Communication Patterns',
+      description: 'After-hours messaging increased 35% this month, correlating with higher stress levels.',
+      icon: MessageSquare,
+      color: 'text-orange-400',
+    },
+    {
+      title: 'Manager Support Score',
+      description: 'Employees with weekly 1-on-1s report 40% higher clarity and goal alignment.',
+      icon: Users,
+      color: 'text-indigo-400',
+    },
+    {
+      title: 'Productivity vs. Well-being',
+      description: 'Optimal productivity achieved at 42-45 work hours/week, declining sharply above 50 hours.',
+      icon: TrendingUp,
+      color: 'text-teal-400',
+    },
   ];
 
   return (

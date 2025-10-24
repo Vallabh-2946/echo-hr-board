@@ -19,12 +19,24 @@ export default function EmployeePortal() {
   const personalRisk = calculateBurnoutRisk(workHours, meetings, sentiment);
 
   const handleSubmit = () => {
+    console.log('✅ Feedback submitted successfully', { 
+      clarity, 
+      balance, 
+      workHours, 
+      meetings, 
+      feedbackText,
+      personalRisk,
+      sentiment
+    });
+    
     const riskShift = clarity < 3 || balance < 3 ? 10 : -5;
     updateOrgRisk(riskShift);
     setFeedbackSent(true);
 
+    // Reset form after submission
     setTimeout(() => {
       setFeedbackSent(false);
+      setFeedbackText('');
     }, 5000);
   };
 
