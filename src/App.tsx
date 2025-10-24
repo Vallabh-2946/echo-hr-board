@@ -3,10 +3,40 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import { AppProvider, useApp } from "@/contexts/AppContext";
+import LoginScreen from "@/components/LoginScreen";
+import Navbar from "@/components/Navbar";
+import HRDashboard from "@/components/HRDashboard";
+import EmployeePortal from "@/components/EmployeePortal";
+import InsightsPage from "@/components/InsightsPage";
+import TeamHealthPage from "@/components/TeamHealthPage";
 
 const queryClient = new QueryClient();
+
+function AppContent() {
+  const { userRole } = useApp();
+
+  if (userRole === 'LOGGED_OUT') {
+    return <LoginScreen />;
+  }
+
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        {userRole === 'HR_MANAGER' ? (
+          <>
+            <Route path="/" element={<HRDashboard />} />
+            <Route path="/insights" element={<InsightsPage />} />
+            <Route path="/team-health" element={<TeamHealthPage />} />
+          </>
+        ) : (
+          <Route path="/" element={<EmployeePortal />} />
+        )}
+      </Routes>
+    </>
+  );
+}
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -14,11 +44,9 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AppProvider>
+          <AppContent />
+        </AppProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

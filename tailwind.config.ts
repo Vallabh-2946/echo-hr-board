@@ -80,10 +80,21 @@ export default {
             height: "0",
           },
         },
+        "pulse-glow": {
+          "0%, 100%": {
+            opacity: "1",
+            boxShadow: "0 0 20px rgba(6, 182, 212, 0.5)",
+          },
+          "50%": {
+            opacity: "0.8",
+            boxShadow: "0 0 40px rgba(6, 182, 212, 0.8)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
       },
     },
   },
